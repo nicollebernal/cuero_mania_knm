@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\UsuarioDAO;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Hash;
+use App\Models\Rol;
 class UsuarioController extends Controller
 {
     /**
@@ -13,7 +15,7 @@ class UsuarioController extends Controller
     public function index()
     {
         $usuarios = UsuarioDAO::all();
-        return view('usuarios.index', compact('usuarios'));
+        return view('Interfaz.administrador.usuarios.index', compact('usuarios'));
         $usuarios = UsuarioDAO::with('rol')->get(); 
         return view('usuarios.index', compact('usuarios'));
     }
@@ -24,7 +26,8 @@ class UsuarioController extends Controller
      */
     public function create()
     {
-        return view('usuarios.create');
+        $roles = Rol::all(); 
+        return view('usuarios.create', compact('roles'));
     }
 
     /**
@@ -40,9 +43,11 @@ class UsuarioController extends Controller
             'direccion' => 'required|string|max:25',
             'contacto' => 'required|string|max:10',
             'gmail' => 'required|email|max:30|unique:usuarios,gmail',
-            'clave' => 'required|string|min:6|confirmed',
+            'clave' => 'required|string|min:10|confirmed',
             'id_rol' => 'required|integer',
         ]);
+        $validatedData['clave'] = Hash::make($validatedData['clave']);
+
 
         UsuarioDAO::create($validatedData);
         return redirect()->route('usuarios.index')->with('success', 'Usuario creado exitosamente.');
