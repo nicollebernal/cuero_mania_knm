@@ -4,69 +4,75 @@ namespace App\Http\Controllers;
 
 use App\Models\personalizacion;
 use Illuminate\Http\Request;
+use App\Models\UsuarioDAO;
+use App\Models\genero;
+use App\Models\marca;
+use App\Models\color;
+use App\Models\categoria;
+
 
 class personalizacionController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        //
+        $personalizaciones = Personalizacion::with(['usuario','categoria','color','marca','genero'])->get();
+        return view('personalizacion.index', compact('personalizaciones'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+ 
+    
     public function create()
     {
-        //
+        $usuarios = UsuarioDAO::all();
+        $categorias = Categoria::all();
+        $colores = Color::all();
+        $marcas = Marca::all();
+        $generos = Genero::all();
+
+        return view('personalizacion.create', compact('usuarios','categorias','colores','marcas','generos'));
+        
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+  
+  
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'descripcion' => 'required|string|max:50',
+            'imagen_personalizacion' => 'required|image|mimes:jpg,jpeg,png|max:2048',
+            'fecha_solicitud' => 'required|date',
+            'id_usuario' => 'required|integer',
+            'id_categoria' => 'required|integer',
+            'id_color' => 'required|integer',
+            'id_marca' => 'required|integer',
+            'id_genero' => 'required|integer',
+        ]);
+
+        // Guardar imagen
+        if ($request->hasFile('imagen_personalizacion')) {
+            $path = $request->file('imagen_personalizacion')->store('personalizaciones', 'public');
+            $validated['imagen_personalizacion'] = $path;
+        }
+
+        Personalizacion::create($validated);
+
+        return redirect()->route('personalizacion.index')->with('success', 'Personalización creada exitosamente');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\personalizacion  $personalizacion
-     * @return \Illuminate\Http\Response
-     */
+  
     public function show(personalizacion $personalizacion)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\personalizacion  $personalizacion
-     * @return \Illuminate\Http\Response
-     */
+    
     public function edit(personalizacion $personalizacion)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\personalizacion  $personalizacion
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, personalizacion $personalizacion)
     {
         //

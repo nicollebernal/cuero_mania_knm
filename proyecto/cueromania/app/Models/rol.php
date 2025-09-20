@@ -7,11 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Rol extends Model
 {
-    use HasFactory;
-
     protected $table = 'roles';
     protected $primaryKey = 'id_rol';
     public $timestamps = false;
 
     protected $fillable = ['nombre_rol'];
+
+   
+    public function usuarios()
+    {
+        return $this->hasMany(UsuarioDAO::class, 'id_rol', 'id_rol');
+    }
 }

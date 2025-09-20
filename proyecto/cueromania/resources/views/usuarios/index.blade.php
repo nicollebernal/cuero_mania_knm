@@ -30,7 +30,6 @@
             <td>{{ $usuario->gmail }}</td>
             <td>{{$usuario->rol->nombre_rol  }}</td>
             <td class="text-end">
-                <a href="{{ route('usuarios.show', $usuario->id_usuario) }}" class="btn btn-info btn-sm">Ver</a>
                 <a href="{{ route('usuarios.edit', $usuario->id_usuario) }}" class="btn btn-warning btn-sm">Editar</a>
                 <form action="{{ route('usuarios.destroy', $usuario->id_usuario) }}" method="POST" class="d-inline">
                     @csrf
