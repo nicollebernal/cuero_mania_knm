@@ -2,84 +2,65 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ventas;
+use App\Models\Venta;
 use Illuminate\Http\Request;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 
-class ventasController extends Controller
+class VentasController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function index(): View
     {
-        //
+        $ventas = Venta::with('usuario')->get();
+        return view('admi.ventas.index', compact('ventas'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function create(): View
     {
-        //
+        return view('admi.ventas.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
-        //
+        $validated = $request->validate([
+            'fecha_ventas'  => 'required|date',
+            'estado_venta'  => 'required|string|max:30',
+            'Total'         => 'required|numeric|min:0',
+            'id_usuario'    => 'required|integer|exists:usuarios,id_usuario',
+        ]);
+
+        Venta::create($validated);
+
+        return redirect()->route('admi.ventas.index')->with('success', 'Venta creada exitosamente');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\ventas  $ventas
-     * @return \Illuminate\Http\Response
-     */
-    public function show(ventas $ventas)
+    public function show(Venta $venta): View
     {
-        //
+        return view('admi.ventas.show', compact('venta'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\ventas  $ventas
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(ventas $ventas)
+    public function edit(Venta $venta): View
     {
-        //
+        return view('admi.ventas.edit', compact('venta'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\ventas  $ventas
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, ventas $ventas)
+    public function update(Request $request, Venta $venta): RedirectResponse
     {
-        //
+        $validated = $request->validate([
+            'fecha_ventas'  => 'required|date',
+            'estado_venta'  => 'required|string|max:30',
+            'Total'         => 'required|numeric|min:0',
+            'id_usuario'    => 'required|integer|exists:usuarios,id_usuario',
+        ]);
+
+        $venta->update($validated);
+
+        return redirect()->route('admi.ventas.index')->with('success', 'Venta actualizada exitosamente');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\ventas  $ventas
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(ventas $ventas)
+    public function destroy(Venta $venta): RedirectResponse
     {
-        //
+        $venta->delete();
+        return redirect()->route('admi.ventas.index')->with('success', 'Venta eliminada exitosamente');
     }
 }
