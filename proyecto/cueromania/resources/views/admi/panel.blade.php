@@ -148,14 +148,16 @@
     <div class="menu-icons">
       <img src="https://img.icons8.com/ios-glyphs/30/user--v1.png" 
            alt="inicio" 
-           onclick="window.location.href='{{ route('usuarios.index') }}'" />
+           onclick="window.location.href='{{ route('admi.usuarios.index') }}'" />
     </div>
   </header>
 
   <nav>
     <ul>
-      <li><a href="{{ route('usuarios.index') }}">Usuarios</a></li>
-      <li><a href="{{ route('personalizacion.index') }}">Personalización</a></li>
+      <li><a href="{{ route('admi.usuarios.index') }}">Usuarios</a></li>
+      <li><a href="{{ route('admi.personalizacion.index') }}">Personalización</a></li>
+      <li><a href="{{ route('admi.ventas.index') }}">Ventas</a></li>
+      <li><a href="{{ route('admi.pagos.index') }}">Pagos</a></li>
     </ul>
   </nav>
 
@@ -163,16 +165,30 @@
     <h1>Panel Administrador</h1>
     <div class="opciones-panel">
       <div class="opcion-panel">
-        <a href="{{ route('usuarios.index') }}">
+        <a href="{{ route('admi.usuarios.index') }}">
           <img src="https://img.icons8.com/ios-filled/50/groups.png" />
           <span>Gestionar Usuarios</span>
         </a>
       </div>
 
       <div class="opcion-panel">
-        <a href="{{ route('personalizacion.index') }}">
+        <a href="{{ route('admi.personalizacion.index') }}">
           <img src="https://img.icons8.com/ios-filled/50/paint-palette.png" />
           <span>Gestionar Personalización</span>
+        </a>
+      </div>
+
+      <div class="opcion-panel">
+        <a href="{{ route('admi.ventas.index') }}">
+          <img src="https://img.icons8.com/ios-filled/50/shopping-cart.png" />
+          <span>Gestionar Ventas</span>
+        </a>
+      </div>
+
+      <div class="opcion-panel">
+        <a href="{{ route('admi.pagos.index') }}">
+          <img src="https://img.icons8.com/ios-filled/50/money-transfer.png" />
+          <span>Gestionar Pagos</span>
         </a>
       </div>
     </div>

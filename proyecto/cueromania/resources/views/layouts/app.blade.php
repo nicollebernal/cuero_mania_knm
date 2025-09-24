@@ -10,7 +10,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-1">
         <div class="container d-flex justify-content-between ">
-          <a class="navbar-brand " href="{{ route('usuarios.index') }}">cueromania</a>
+          <a class="navbar-brand " href="{{ route('admi.usuarios.index') }}">cueromania</a>
           
         
         </div>

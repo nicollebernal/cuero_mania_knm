@@ -25,8 +25,15 @@ class UsuarioDAO extends Model
         'clave',
         'id_rol'
     ];
+
+
+    
     public function rol()
     {
         return $this->belongsTo(Rol::class, 'id_rol', 'id_rol');
+    }
+     public function ventas()
+    {
+        return $this->hasMany(Venta::class, 'id_usuario', 'id_usuario');
     }
 }

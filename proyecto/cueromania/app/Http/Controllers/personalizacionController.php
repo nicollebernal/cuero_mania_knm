@@ -18,7 +18,7 @@ class personalizacionController extends Controller
     public function index()
     {
         $personalizaciones = Personalizacion::with(['usuario','categoria','color','marca','genero'])->get();
-        return view('personalizacion.index', compact('personalizaciones'));
+        return view('admi.personalizacion.index', compact('personalizaciones'));
     }
 
  
@@ -31,7 +31,7 @@ class personalizacionController extends Controller
         $marcas = Marca::all();
         $generos = Genero::all();
 
-        return view('personalizacion.create', compact('usuarios','categorias','colores','marcas','generos'));
+        return view('admi.personalizacion.create', compact('usuarios','categorias','colores','marcas','generos'));
         
     }
 
@@ -58,7 +58,7 @@ class personalizacionController extends Controller
 
         Personalizacion::create($validated);
 
-        return redirect()->route('personalizacion.index')->with('success', 'Personalización creada exitosamente');
+        return redirect()->route('admi.personalizacion.index')->with('success', 'Personalización creada exitosamente');
     }
 
   

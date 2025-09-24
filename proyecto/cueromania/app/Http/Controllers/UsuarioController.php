@@ -11,15 +11,15 @@ class UsuarioController extends Controller
 {
     public function index()
     {
-        // Traemos los usuarios con su rol
+      
         $usuarios = UsuarioDAO::with('rol')->get();
-        return view('usuarios.index', compact('usuarios'));
+        return view('admi.usuarios.index', compact('usuarios'));
     }
 
     public function create()
     {
         $roles = Rol::all();
-        return view('usuarios.create', compact('roles'));
+        return view('admi.usuarios.create', compact('roles'));
     }
 
     public function store(Request $request)
@@ -39,20 +39,20 @@ class UsuarioController extends Controller
         $validatedData['clave'] = Hash::make($validatedData['clave']);
 
         UsuarioDAO::create($validatedData);
-        return redirect()->route('usuarios.index')->with('success', 'Usuario creado exitosamente.');
+        return redirect()->route('admi.usuarios.index')->with('success', 'Usuario creado exitosamente.');
     }
 
     public function show(UsuarioDAO $usuario)
     {
         // 👈 cambio: usamos $usuario, no $usuarioDAO
-        return view('usuarios.show', compact('usuario'));
+        return view('admi.usuarios.show', compact('usuario'));
     }
 
     public function edit($id_usuario)
     {
         $usuario = UsuarioDAO::findOrFail($id_usuario);
         $roles = Rol::all();
-        return view('usuarios.edit', compact('usuario', 'roles'));
+        return view('admi.usuarios.edit', compact('usuario', 'roles'));
     }
 
     public function update(Request $request, $id_usuario)
@@ -72,14 +72,14 @@ class UsuarioController extends Controller
         $usuario = UsuarioDAO::findOrFail($id_usuario);
         $usuario->update($validatedData); // 👈 así sí
 
-        return redirect()->route('usuarios.index')->with('success', 'Usuario actualizado exitosamente.');
+        return redirect()->route('admi.usuarios.index')->with('success', 'Usuario actualizado exitosamente.');
     }
 
     public function destroy($id_usuario)
     {
         $usuario = UsuarioDAO::findOrFail($id_usuario);
         $usuario->delete(); // 
-        return redirect()->route('usuarios.index')->with('success', 'Usuario eliminado exitosamente.');
+        return redirect()->route('admi.usuarios.index')->with('success', 'Usuario eliminado exitosamente.');
     }
 }
 
