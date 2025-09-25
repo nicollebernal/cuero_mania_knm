@@ -7,11 +7,19 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #003366, #001a33); /* Azul oscuro */
+      background: linear-gradient(135deg, #8d1b2e, #5a0f1b, #570a18);
+      background-size: 400% 400%;
+      animation: gradient 12s ease infinite;
+    }
+
+    @keyframes gradient {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
     }
 
     .top-bar {
-      background-color: #003366; /* Azul oscuro */
+      background-color: rgba(0, 0, 0, 0.4);
       color: white;
       padding: 5px 20px;
       font-size: 14px;
@@ -19,12 +27,12 @@
     }
 
     header {
-      background-color: white;
+      background-color: rgba(255,255,255,0.95);
       display: flex;
       align-items: center;
       justify-content: center;
       padding: 15px 30px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
       position: relative;
     }
 
@@ -36,11 +44,12 @@
 
     .logo img {
       height: 60px;
+      border-radius: 12px;
     }
 
     .logo h2 {
       font-size: 28px;
-      color: #003366; /* Azul oscuro */
+      color: #8d1b2e;
       margin: 0;
     }
 
@@ -56,7 +65,7 @@
     }
 
     nav {
-      background-color: #003366; /* Azul oscuro */
+      background-color: #8d1b2e;
       padding: 10px 30px;
       display: flex;
       justify-content: center;
@@ -77,6 +86,10 @@
       font-size: 16px;
     }
 
+    nav a:hover {
+      color: #ffcc00;
+    }
+
     .panel-container {
       max-width: 1100px;
       margin: 30px auto;
@@ -89,7 +102,7 @@
     .panel-container h1 {
       text-align: center;
       margin-bottom: 30px;
-      color: #333;
+      color: #8d1b2e;
     }
 
     .opciones-panel {
@@ -102,7 +115,7 @@
     .opcion-panel {
       width: 180px;
       height: 180px;
-      background-color: #f0f0f0;
+      background-color: #f9f9f9;
       border-radius: 12px;
       display: flex;
       flex-direction: column;
@@ -110,11 +123,12 @@
       justify-content: center;
       text-align: center;
       cursor: pointer;
-      transition: transform 0.2s ease;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
     .opcion-panel:hover {
       transform: scale(1.05);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.2);
     }
 
     .opcion-panel img {
@@ -129,7 +143,7 @@
     }
 
     footer {
-      background-color: #003366; /* Azul oscuro */
+      background-color: #8d1b2e;
       color: white;
       text-align: center;
       padding: 20px;
@@ -138,12 +152,12 @@
   </style>
 </head>
 <body>
-  <div class="top-bar">Contacto: 123 456 789 | servicio@innovar.com</div>
+  <div class="top-bar">Contacto: 123 456 789 | servicio@cueromania.com</div>
 
   <header>
     <div class="logo">
-      <img src="{{ asset('cartshop.jpg') }}" alt="CartShop Logo" />
-      <h2>Curomania</h2>
+      <img src="{{ asset('img/logo.jpeg') }}" alt="Cueromania Logo" />
+      <h2>Cueromania</h2>
     </div>
     <div class="menu-icons">
       <img src="https://img.icons8.com/ios-glyphs/30/user--v1.png" 
@@ -152,15 +166,7 @@
     </div>
   </header>
 
-  <nav>
-    <ul>
-      <li><a href="{{ route('admi.usuarios.index') }}">Usuarios</a></li>
-      <li><a href="{{ route('admi.personalizacion.index') }}">Personalización</a></li>
-      <li><a href="{{ route('admi.ventas.index') }}">Ventas</a></li>
-      <li><a href="{{ route('admi.pagos.index') }}">Pagos</a></li>
-    </ul>
-  </nav>
-
+ 
   <div class="panel-container">
     <h1>Panel Administrador</h1>
     <div class="opciones-panel">
@@ -195,7 +201,7 @@
   </div>
 
   <footer>
-    <p>Innovar S.A.S. | Tel: +57 312 456 7890 | Email: servicio@innovar.com</p>
+    <p>Cueromania S.A.S. | Tel: +57 312 456 7890 | Email: servicio@cueromania.com</p>
     <p>Dirección: Calle 123 #45-67, Ciudad Colombia</p>
   </footer>
 </body>

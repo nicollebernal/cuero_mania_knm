@@ -28,6 +28,7 @@
                 <th>Género</th>
                 <th>Descripción</th>
                 <th>Imagen</th>
+                <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
@@ -54,10 +55,26 @@
                             <span class="badge bg-secondary">Sin imagen</span>
                         @endif
                     </td>
+                    <td>
+                        <a href="{{ route('admi.personalizacion.edit', $p->id_personalizacion) }}" 
+                           class="btn btn-sm btn-warning">
+                           ✏️ Editar
+                        </a>
+
+                        <form action="{{ route('admi.personalizacion.destroy', $p->id_personalizacion) }}" 
+                              method="POST" class="d-inline"
+                              onsubmit="return confirm('¿Seguro que deseas eliminar esta personalización?')">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-sm btn-danger">
+                                🗑️ Eliminar
+                            </button>
+                        </form>
+                    </td>
                 </tr>
             @empty
                 <tr>
-                    <td colspan="9" class="text-center text-muted">No hay personalizaciones registradas.</td>
+                    <td colspan="10" class="text-center text-muted">No hay personalizaciones registradas.</td>
                 </tr>
             @endforelse
         </tbody>
