@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Curomania - Login</title>
+    <title>Curomania - Registro</title>
     <link rel="stylesheet" href="{{ asset('css/sestilos.css') }}">
     <style>
         body {
@@ -26,40 +26,26 @@
             100% {background-position: 0% 50%;}
         }
 
-        .logo-container {
-            margin-bottom: 20px;
-            text-align: center;
-        }
-
-        .logo {
-            width: 140px;
-            height: auto;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
-        }
-
-        .login-container {
-            width: 320px;
-            padding: 30px 35px;
+        .register-container {
+            width: 380px;
+            padding: 30px;
             background: rgba(255, 255, 255, 0.12);
             border-radius: 16px;
             box-shadow: 0 8px 25px rgba(0,0,0,0.5);
             backdrop-filter: blur(8px);
         }
 
-        .login-container h2 {
+        .register-container h2 {
             text-align: center;
             margin-bottom: 25px;
             color: #fff;
             font-weight: 600;
-            letter-spacing: 1px;
         }
 
-        .login-container input[type="email"],
-        .login-container input[type="password"] {
+        .register-container input {
             width: 90%;
             padding: 12px 14px;
-            margin: 10px 0;
+            margin: 8px 0;
             border: none;
             border-radius: 10px;
             outline: none;
@@ -67,20 +53,33 @@
             font-size: 14px;
         }
 
-        .login-container input[type="submit"] {
+        .register-container input[type="submit"] {
             width: 100%;
             background: linear-gradient(135deg, #b32424, #6a0f0f);
             color: white;
-            padding: 12px;
-            border: none;
-            border-radius: 10px;
             cursor: pointer;
             font-weight: bold;
             transition: background 0.3s ease;
         }
 
-        .login-container input[type="submit"]:hover {
+        .register-container input[type="submit"]:hover {
             background: linear-gradient(135deg, #d92e2e, #801414);
+        }
+
+        .login-link {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 14px;
+        }
+
+        .login-link a {
+            color: #ffd6d6;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .login-link a:hover {
+            text-decoration: underline;
         }
 
         .error-msg {
@@ -89,50 +88,36 @@
             margin-top: 15px;
             font-size: 14px;
         }
-
-        .register-link {
-            text-align: center;
-            margin-top: 15px;
-            font-size: 14px;
-        }
-
-        .register-link a {
-            color: #ffd6d6;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        .register-link a:hover {
-            text-decoration: underline;
-            color: #fff;
-        }
     </style>
 </head>
 <body>
-    <div class="logo-container">
-        <img src="{{ asset('img/logo.jpeg') }}" alt="Curomania Logo" class="logo">
-    </div>
-
-    <div class="login-container">
-        <h2>Iniciar Sesión</h2>
+    <div class="register-container">
+        <h2>Registro</h2>
 
         {{-- Mostrar errores --}}
         @if($errors->any())
-            <div class="error-msg">
-                {{ $errors->first() }}
-            </div>
+            <div class="error-msg">{{ $errors->first() }}</div>
         @endif
 
-        <form method="POST" action="{{ route('login.process') }}">
+        <form method="POST" action="{{ route('register.process') }}">
             @csrf
+            <input type="text" name="id_usuario" placeholder="Documento de identidad" required>
+            <input type="text" name="primer_nombre" placeholder="Primer Nombre" required>
+            <input type="text" name="segundo_nombre" placeholder="Segundo Nombre (opcional)">
+            <input type="text" name="primer_apellido" placeholder="Primer Apellido" required>
+            <input type="text" name="segundo_apellido" placeholder="Segundo Apellido (opcional)">
+            <input type="text" name="direccion" placeholder="Dirección de residencia" required>
+            <input type="text" name="contacto" placeholder="Teléfono o Celular" required>
             <input type="email" name="gmail" placeholder="Correo Gmail" required>
             <input type="password" name="clave" placeholder="Contraseña" required>
-            <input type="submit" value="Ingresar">
+            <input type="password" name="clave_confirmation" placeholder="Confirmar Contraseña" required>
+            <input type="submit" value="Registrarse">
         </form>
 
-        <div class="register-link">
-            ¿No tienes cuenta? <a href="{{ route('register.form') }}">Regístrate aquí</a>
+        <div class="login-link">
+            ¿Ya tienes cuenta? <a href="{{ route('login.form') }}">Inicia sesión aquí</a>
         </div>
     </div>
 </body>
 </html>
+

@@ -2,16 +2,24 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>CartShop</title>
+    <title>Curomania - Cliente</title>
     <style>
         body {
             margin: 0;
             font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #003366, #001a33);
+            background: linear-gradient(135deg, #8d1b2e, #5a0f1b, #570a18);
+            background-size: 400% 400%;
+            animation: gradient 12s ease infinite;
+        }
+
+        @keyframes gradient {
+            0% {background-position: 0% 50%;}
+            50% {background-position: 100% 50%;}
+            100% {background-position: 0% 50%;}
         }
 
         .top-bar {
-            background-color: #003366;
+            background-color: rgba(0,0,0,0.4);
             padding: 5px 20px;
             color: white;
             font-size: 14px;
@@ -19,12 +27,12 @@
         }
 
         header {
-            background-color: white;
+            background-color: rgba(255,255,255,0.9);
             display: flex;
             align-items: center;
             justify-content: space-between;
             padding: 15px 30px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
 
         .logo {
@@ -35,11 +43,12 @@
 
         .logo img {
             height: 60px;
+            border-radius: 12px;
         }
 
         .logo h2 {
             font-size: 28px;
-            color: #003366;
+            color: #8d1b2e;
             margin: 0;
         }
 
@@ -75,7 +84,7 @@
         }
 
         nav {
-            background-color: #003366;
+            background-color: #8d1b2e;
             padding: 12px 30px;
             display: flex;
             justify-content: center;
@@ -112,7 +121,7 @@
 
         .cliente-container h1 {
             text-align: center;
-            color: #003366;
+            color: #8d1b2e;
             margin-bottom: 25px;
         }
 
@@ -161,14 +170,14 @@
         .producto p {
             margin: 5px 0;
             font-size: 16px;
-            color: #003366;
+            color: #8d1b2e;
             font-weight: bold;
         }
 
         .btn-carrito {
             margin-top: 10px;
             padding: 8px 15px;
-            background-color: #003366;
+            background-color: #8d1b2e;
             color: white;
             border: none;
             border-radius: 20px;
@@ -178,11 +187,11 @@
         }
 
         .btn-carrito:hover {
-            background-color: #0055aa;
+            background-color: #b32424;
         }
 
         footer {
-            background-color: #003366;
+            background-color: #8d1b2e;
             color: white;
             text-align: center;
             padding: 20px;
@@ -201,12 +210,12 @@
     </style>
 </head>
 <body>
-    <div class="top-bar">Contacto: 123 456 789 | servicio@innovar.com</div>
+    <div class="top-bar">Contacto: 123 456 789 | servicio@curomania.com</div>
 
     <header>
         <div class="logo">
-            <img src="{{ asset('img/cartshop.jpg') }}" alt="CartShop Logo">
-            <h2>CartShop</h2>
+            <img src="{{ asset('img/logo.jpeg') }}" alt="Curomania Logo">
+            <h2>Curomania</h2>
         </div>
         <div class="search-bar">
             <input type="text" placeholder="Buscar productos...">
@@ -254,7 +263,7 @@
     </div>
 
     <footer>
-        <p>Innovar S.A.S. | Tel: +57 312 456 7890 | Email: servicio@innovar.com</p>
+        <p>Curomania S.A.S. | Tel: +57 312 456 7890 | Email: servicio@curomania.com</p>
         <p>Dirección: Calle 123 #45-67, Ciudad Colombia</p>
     </footer>
 </body>
