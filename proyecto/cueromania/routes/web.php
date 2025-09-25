@@ -18,7 +18,11 @@ Route::get('/register', [RegisterController::class, 'showRegisterForm'])->name('
 Route::post('/register', [RegisterController::class, 'register'])->name('register.process');
 
 Route::get('/admin/dashboard', fn() => view('admi.panel'))->name('admin.dashboard');
+
 Route::get('/empleado/dashboard', fn() => view('empleado.empleado'))->name('empleado.dashboard');
+
+Route::get('/empleado/dashboard', fn() => view('empleado.panel'))->name('empleado.dashboard');
+
 Route::get('/cliente/dashboard', fn() => view('cliente.cliente'))->name('cliente.dashboard');
 
 Route::prefix('admi')->name('admi.')->group(function () {
