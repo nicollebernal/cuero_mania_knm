@@ -2,6 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Curomania - Cliente</title>
     <style>
         body {
@@ -69,17 +70,17 @@
         .menu-icons {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 15px;
         }
 
-        .menu-icons img {
+        .menu-icons a img {
             width: 30px;
             height: 30px;
             cursor: pointer;
             transition: transform 0.3s;
         }
 
-        .menu-icons img:hover {
+        .menu-icons a img:hover {
             transform: scale(1.1);
         }
 
@@ -221,8 +222,15 @@
             <input type="text" placeholder="Buscar productos...">
         </div>
         <div class="menu-icons">
-            <img src="https://img.icons8.com/ios-glyphs/30/user--v1.png" >
-            <img src="https://img.icons8.com/ios-filled/30/shopping-cart.png" alt="carrito">
+            <a href="{{ route('login.form') }}">
+                <img src="https://img.icons8.com/ios-filled/30/user--v1.png" alt="login" title="Iniciar Sesión">
+            </a>
+            <a href="{{ route('cliente.personalizacion.create') }}">
+                <img src="https://img.icons8.com/ios-filled/30/paint-palette.png" alt="personalizacion" title="Solicitar Personalización">
+            </a>
+            <a href="{{ route('carrito.ver') }}">
+                <img src="https://img.icons8.com/ios-filled/30/shopping-cart.png" alt="carrito" title="Carrito">
+            </a>
         </div>
     </header>
 
@@ -243,21 +251,21 @@
                 <img src="{{ asset('img/chamarra.png') }}" alt="Chamarra">
                 <h3>Chamarra M blanca cuero hombre poco uso</h3>
                 <p>$370.000</p>
-                <button class="btn-carrito">Agregar al carrito</button>
+                <button class="btn-carrito" data-id="1">Agregar al carrito</button>
             </div>
 
             <div class="producto">
                 <img src="{{ asset('img/beisbolera.png') }}" alt="Beisbolera">
                 <h3>Chaqueta en cuero hombre poco uso</h3>
                 <p>$300.000</p>
-                <button class="btn-carrito">Agregar al carrito</button>
+                <button class="btn-carrito" data-id="2">Agregar al carrito</button>
             </div>
 
             <div class="producto">
                 <img src="{{ asset('img/piloto.png') }}" alt="Piloto">
                 <h3>Chaqueta en cuero piloto L hombre poco uso</h3>
                 <p>$850.000</p>
-                <button class="btn-carrito">Agregar al carrito</button>
+                <button class="btn-carrito" data-id="3">Agregar al carrito</button>
             </div>
         </div>
     </div>
@@ -266,5 +274,31 @@
         <p>Curomania S.A.S. | Tel: +57 312 456 7890 | Email: servicio@curomania.com</p>
         <p>Dirección: Calle 123 #45-67, Ciudad Colombia</p>
     </footer>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.btn-carrito').forEach(boton => {
+        boton.addEventListener('click', () => {
+          const idProducto = boton.dataset.id;
+
+          fetch('/carrito/agregar', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
+            },
+            body: JSON.stringify({ id_producto: idProducto, cantidad: 1 })
+          })
+          .then(res => res.json())
+          .then(data => {
+            alert(data.message);
+          })
+          .catch(err => console.error(err));
+        });
+      });
+    });
+    </script>
 </body>
 </html>
+
+

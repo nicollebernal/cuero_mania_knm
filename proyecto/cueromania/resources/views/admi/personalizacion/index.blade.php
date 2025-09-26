@@ -4,8 +4,9 @@
 <div class="container">
     <h2 class="mb-4 text-center">Lista de Personalizaciones</h2>
 
+    {{-- Mensaje de éxito una sola vez --}}
     @if(session('success'))
-        <div class="alert alert-success">
+        <div class="alert alert-success text-center">
             {{ session('success') }}
         </div>
     @endif
@@ -81,3 +82,4 @@
     </table>
 </div>
 @endsection
+
