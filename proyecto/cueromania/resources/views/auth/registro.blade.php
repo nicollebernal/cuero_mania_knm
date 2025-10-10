@@ -2,16 +2,14 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Curomania - Registro</title>
-    <link rel="stylesheet" href="{{ asset('css/sestilos.css') }}">
+    <title>Cueromania - Registro</title>
     <style>
         body {
             margin: 0;
             padding: 0;
             font-family: 'Segoe UI', Arial, sans-serif;
-            background: linear-gradient(135deg, #8d1b2eff, #5a0f1b, #570a18ff);
-            background-size: 400% 400%;
-            animation: gradient 12s ease infinite;
+            background: url('{{ asset('img/fondo.png') }}') no-repeat center center fixed;
+            background-size: cover;
             height: 100vh;
             display: flex;
             flex-direction: column;
@@ -20,19 +18,30 @@
             color: #fff;
         }
 
-        @keyframes gradient {
-            0% {background-position: 0% 50%;}
-            50% {background-position: 100% 50%;}
-            100% {background-position: 0% 50%;}
+        /* Capa oscura encima del fondo */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.45);
+            z-index: -1;
         }
 
         .register-container {
-            width: 380px;
-            padding: 30px;
-            background: rgba(255, 255, 255, 0.12);
+            width: 420px;
+            padding: 40px;
+            background: url('{{ asset('img/fondo.png') }}') no-repeat center center fixed;
+            backdrop-filter: blur(10px);
             border-radius: 16px;
             box-shadow: 0 8px 25px rgba(0,0,0,0.5);
-            backdrop-filter: blur(8px);
+            transition: all 0.3s ease;
+        }
+
+        .register-container:hover {
+            background: url('{{ asset('img/fondo.png') }}') no-repeat center center fixed;
         }
 
         .register-container h2 {
@@ -49,13 +58,14 @@
             border: none;
             border-radius: 10px;
             outline: none;
-            background: rgba(255,255,255,0.9);
+            background: rgba(255,255,255,0.95);
             font-size: 14px;
+            color: #333;
         }
 
         .register-container input[type="submit"] {
             width: 100%;
-            background: linear-gradient(135deg, #b32424, #6a0f0f);
+            background: linear-gradient(135deg, #b32424, #9e1b1bff);
             color: white;
             cursor: pointer;
             font-weight: bold;
@@ -70,6 +80,7 @@
             text-align: center;
             margin-top: 15px;
             font-size: 14px;
+            color: #eee;
         }
 
         .login-link a {
@@ -80,6 +91,7 @@
 
         .login-link a:hover {
             text-decoration: underline;
+            color: #fff;
         }
 
         .error-msg {
@@ -87,6 +99,14 @@
             text-align: center;
             margin-top: 15px;
             font-size: 14px;
+        }
+
+        /* Responsivo */
+        @media (max-width: 480px) {
+            .register-container {
+                width: 90%;
+                padding: 30px;
+            }
         }
     </style>
 </head>
@@ -120,4 +140,3 @@
     </div>
 </body>
 </html>
-
