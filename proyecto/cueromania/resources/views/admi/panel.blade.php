@@ -166,45 +166,44 @@
 
   <header>
     <div class="logo">
-      <img src="<?php echo e(asset('img/logo.jpeg')); ?>" alt="Cueromania Logo" />
+      <img src="{{ asset('img/logo.jpeg') }}" alt="Cueromania Logo" />
       <h2>Cueromania</h2>
     </div>
 
     <div class="menu-icons">
       <!-- ✅ Mostrar nombre del usuario logueado -->
-      <?php if(session('usuario')): ?>
+      @if(session('usuario'))
         <span class="nombre-usuario">
-          <?php echo e(session('usuario')->primer_nombre); ?> <?php echo e(session('usuario')->primer_apellido); ?>
-
+          {{ session('usuario')->primer_nombre }} {{ session('usuario')->primer_apellido }}
         </span>
-      <?php endif; ?>
+      @endif
 
       <!-- Icono de persona (no se cambia nada) -->
       <img src="https://img.icons8.com/ios-glyphs/30/user--v1.png" 
            alt="Inicio"
-           onclick="window.location.href='<?php echo e(route('login.form')); ?>'" />
+           onclick="window.location.href='{{ route('login.form') }}'" />
     </div>
   </header>
 
   <div class="panel-container">
     <h1>Panel de Administración</h1>
     <div class="opciones-panel">
-      <a href="<?php echo e(route('admi.usuarios.index')); ?>" class="opcion-panel">
+      <a href="{{ route('admi.usuarios.index') }}" class="opcion-panel">
         <img src="https://img.icons8.com/ios-filled/50/groups.png" />
         <span>Gestionar Usuarios</span>
       </a>
 
-      <a href="<?php echo e(route('admi.personalizacion.index')); ?>" class="opcion-panel">
+      <a href="{{ route('admi.personalizacion.index') }}" class="opcion-panel">
         <img src="https://img.icons8.com/ios-filled/50/paint-palette.png" />
         <span>Gestionar Personalización</span>
       </a>
 
-      <a href="<?php echo e(route('admi.ventas.index')); ?>" class="opcion-panel">
+      <a href="{{ route('admi.ventas.index') }}" class="opcion-panel">
         <img src="https://img.icons8.com/ios-filled/50/shopping-cart.png" />
         <span>Gestionar Ventas</span>
       </a>
 
-      <a href="<?php echo e(route('admi.pagos.index')); ?>" class="opcion-panel">
+      <a href="{{ route('admi.pagos.index') }}" class="opcion-panel">
         <img src="https://img.icons8.com/ios-filled/50/money-transfer.png" />
         <span>Gestionar Pagos</span>
       </a>
@@ -218,4 +217,3 @@
 </body>
 </html>
 
-<?php /**PATH C:\xampp\htdocs\proyecto\cueromania\resources\views/admi/panel.blade.php ENDPATH**/ ?>

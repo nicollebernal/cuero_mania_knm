@@ -8,7 +8,7 @@
             margin: 0;
             padding: 0;
             font-family: 'Segoe UI', Arial, sans-serif;
-            background: url('<?php echo e(asset('img/fondo.png')); ?>') no-repeat center center fixed;
+            background: url('{{ asset('img/fondo.png') }}') no-repeat center center fixed;
             background-size: cover;
             height: 100vh;
             display: flex;
@@ -33,7 +33,7 @@
         .register-container {
             width: 420px;
             padding: 40px;
-            background: url('<?php echo e(asset('img/fondo.png')); ?>') no-repeat center center fixed;
+            background: url('{{ asset('img/fondo.png') }}') no-repeat center center fixed;
             backdrop-filter: blur(10px);
             border-radius: 16px;
             box-shadow: 0 8px 25px rgba(0,0,0,0.5);
@@ -41,7 +41,7 @@
         }
 
         .register-container:hover {
-            background: url('<?php echo e(asset('img/fondo.png')); ?>') no-repeat center center fixed;
+            background: url('{{ asset('img/fondo.png') }}') no-repeat center center fixed;
         }
 
         .register-container h2 {
@@ -114,13 +114,13 @@
     <div class="register-container">
         <h2>Registro</h2>
 
-        
-        <?php if($errors->any()): ?>
-            <div class="error-msg"><?php echo e($errors->first()); ?></div>
-        <?php endif; ?>
+        {{-- Mostrar errores --}}
+        @if($errors->any())
+            <div class="error-msg">{{ $errors->first() }}</div>
+        @endif
 
-        <form method="POST" action="<?php echo e(route('register.process')); ?>">
-            <?php echo csrf_field(); ?>
+        <form method="POST" action="{{ route('register.process') }}">
+            @csrf
             <input type="text" name="id_usuario" placeholder="Documento de identidad" required>
             <input type="text" name="primer_nombre" placeholder="Primer Nombre" required>
             <input type="text" name="segundo_nombre" placeholder="Segundo Nombre (opcional)">
@@ -135,9 +135,8 @@
         </form>
 
         <div class="login-link">
-            ¿Ya tienes cuenta? <a href="<?php echo e(route('login.form')); ?>">Inicia sesión aquí</a>
+            ¿Ya tienes cuenta? <a href="{{ route('login.form') }}">Inicia sesión aquí</a>
         </div>
     </div>
 </body>
 </html>
-<?php /**PATH C:\xampp\htdocs\proyecto\cueromania\resources\views/auth/registro.blade.php ENDPATH**/ ?>

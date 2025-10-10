@@ -2,15 +2,15 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Curomania - Cliente</title>
-    <link rel="stylesheet" href="<?php echo e(asset('css/cliente.css')); ?>">
+    <link rel="stylesheet" href="{{ asset('css/cliente.css') }}">
 </head>
 <body>
 
     <header>
         <div class="logo">
-            <img src="<?php echo e(asset('img/logo.jpeg')); ?>" alt="Curomania Logo">
+            <img src="{{ asset('img/logo.jpeg') }}" alt="Curomania Logo">
             <h2>Curomania</h2>
         </div>
 
@@ -20,25 +20,24 @@
 
         <div class="menu-icons">
 
-            <a href="<?php echo e(route('cliente.personalizacion.create')); ?>">
+            <a href="{{ route('cliente.personalizacion.create') }}">
                 <img src="https://img.icons8.com/ios-filled/30/paint-palette.png" alt="personalizacion" title="Solicitar Personalización">
             </a>
 
             <!-- Ícono del carrito -->
-            <a href="<?php echo e(route('carrito.ver')); ?>">
+            <a href="{{ route('carrito.ver') }}">
                 <img src="https://img.icons8.com/ios-filled/30/shopping-cart.png" alt="carrito" title="Carrito">
             
             </a>
 
-            <a href="<?php echo e(route('login.form')); ?>" style="display: flex; flex-direction: column; align-items: center; text-decoration: none; color: white;">
+            <a href="{{ route('login.form') }}" style="display: flex; flex-direction: column; align-items: center; text-decoration: none; color: white;">
                 <img src="https://img.icons8.com/ios-filled/30/user--v1.png" alt="login" title="Iniciar Sesión">
                 
-                <?php if(session('usuario')): ?>
+                @if(session('usuario'))
                     <span style="font-size: 12px; color: black; margin-top: 3px;">
-                        <?php echo e(session('usuario')->primer_nombre); ?>
-
+                        {{ session('usuario')->primer_nombre }}
                     </span>
-                <?php endif; ?>
+                @endif
             </a>
         </div>
     </header>
@@ -57,21 +56,21 @@
 
         <div class="productos">
             <div class="producto">
-                <img src="<?php echo e(asset('img/chamarra.png')); ?>" alt="Chamarra">
+                <img src="{{ asset('img/chamarra.png') }}" alt="Chamarra">
                 <h3>Chamarra M blanca cuero hombre poco uso</h3>
                 <p>$370.000</p>
                 <button class="btn-carrito" data-id="1">Agregar al carrito</button>
             </div>
 
             <div class="producto">
-                <img src="<?php echo e(asset('img/beisbolera.png')); ?>" alt="Beisbolera">
+                <img src="{{ asset('img/beisbolera.png') }}" alt="Beisbolera">
                 <h3>Chaqueta en cuero hombre poco uso</h3>
                 <p>$300.000</p>
                 <button class="btn-carrito" data-id="2">Agregar al carrito</button>
             </div>
 
             <div class="producto">
-                <img src="<?php echo e(asset('img/piloto.png')); ?>" alt="Piloto">
+                <img src="{{ asset('img/piloto.png') }}" alt="Piloto">
                 <h3>Chaqueta en cuero piloto L hombre poco uso</h3>
                 <p>$850.000</p>
                 <button class="btn-carrito" data-id="3">Agregar al carrito</button>
@@ -110,4 +109,3 @@
 
 </body>
 </html>
-<?php /**PATH C:\xampp\htdocs\proyecto\cueromania\resources\views/cliente/cliente.blade.php ENDPATH**/ ?>

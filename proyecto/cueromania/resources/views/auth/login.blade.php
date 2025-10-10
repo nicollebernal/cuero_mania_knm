@@ -8,7 +8,7 @@
         margin: 0;
         padding: 0;
         font-family: 'Segoe UI', Arial, sans-serif;
-        background: url('<?php echo e(asset('img/fondo.png')); ?>') no-repeat center center fixed;
+        background: url('{{ asset('img/fondo.png') }}') no-repeat center center fixed;
         background-size: cover;
         height: 100vh;
         display: flex;
@@ -45,7 +45,7 @@
     .login-container {
         width: 400px;
         padding: 40px;
-        background: url('<?php echo e(asset('img/fondo.png')); ?>') no-repeat center center fixed;
+        background: url('{{ asset('img/fondo.png') }}') no-repeat center center fixed;
         backdrop-filter: blur(10px); 
         border-radius: 16px;
         box-shadow: 0 8px 25px rgba(0,0,0,0.4);
@@ -54,7 +54,7 @@
     }
 
     .login-container:hover {
-        background: url('<?php echo e(asset('img/fondo.png')); ?>') no-repeat center center fixed;
+        background: url('{{ asset('img/fondo.png') }}') no-repeat center center fixed;
     }
 
     .login-container h2 {
@@ -135,31 +135,29 @@
 
 <body>
     <div class="logo-container">
-        <img src="<?php echo e(asset('img/logo.jpeg')); ?>" alt="Cueromania Logo" class="logo">
+        <img src="{{ asset('img/logo.jpeg') }}" alt="Cueromania Logo" class="logo">
     </div>
 
     <div class="login-container">
         <h2>Iniciar Sesión</h2>
 
-        
-        <?php if($errors->any()): ?>
+        {{-- Mostrar errores --}}
+        @if($errors->any())
             <div class="error-msg">
-                <?php echo e($errors->first()); ?>
-
+                {{ $errors->first() }}
             </div>
-        <?php endif; ?>
+        @endif
 
-        <form method="POST" action="<?php echo e(route('login.process')); ?>">
-            <?php echo csrf_field(); ?>
+        <form method="POST" action="{{ route('login.process') }}">
+            @csrf
             <input type="email" name="gmail" placeholder="Correo Gmail" required>
             <input type="password" name="clave" placeholder="Contraseña" required>
             <input type="submit" value="Ingresar">
         </form>
 
         <div class="register-link">
-            ¿No tienes cuenta? <a href="<?php echo e(route('register.form')); ?>">Regístrate aquí</a>
+            ¿No tienes cuenta? <a href="{{ route('register.form') }}">Regístrate aquí</a>
         </div>
     </div>
 </body>
 </html>
-<?php /**PATH C:\xampp\htdocs\proyecto\cueromania\resources\views/auth/login.blade.php ENDPATH**/ ?>
