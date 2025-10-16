@@ -192,7 +192,7 @@
     <div class="content-area container-fluid">
       <h1 class="text-center mb-5" style="color: #ffffff;">Panel de Administración</h1>
       <div class="row justify-content-center gy-4">
-        <div class="col-sm-6 col-md-4 col-lg-3">
+        <div class="col-sm-5 col-md-5 col-lg-3">
           <a href="{{ route('admi.usuarios.index') }}" class="card card-option text-decoration-none">
             <div class="card-body">
               <img src="https://img.icons8.com/ios-filled/50/groups.png" alt="Usuarios">
@@ -200,7 +200,7 @@
             </div>
           </a>
         </div>
-        <div class="col-sm-6 col-md-4 col-lg-3">
+        <div class="col-sm-5 col-md-5 col-lg-4">
           <a href="{{ route('admi.personalizacion.index') }}" class="card card-option text-decoration-none">
             <div class="card-body">
               <img src="https://img.icons8.com/ios-filled/50/paint-palette.png" alt="Personalización">

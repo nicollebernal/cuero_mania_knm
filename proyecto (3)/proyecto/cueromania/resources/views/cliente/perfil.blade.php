@@ -5,7 +5,7 @@
   <meta name="csrf-token" content="{{ csrf_token() }}" />
   <title>Editar Perfil - Curomania</title>
 
-  <!-- Bootstrap CSS -->
+
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
 
   <style>
@@ -17,7 +17,7 @@
 
     header {
       background-color: #1f1f1f;
-      padding: 15px 30px;
+      padding: 18px 32px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -95,7 +95,7 @@
       background-color: #8d1b2e;
       color: white;
       border: none;
-      padding: 12px 25px;
+      padding: 18px 27px;
       border-radius: 25px;
       font-size: 16px;
       cursor: pointer;
@@ -105,7 +105,7 @@
     }
 
     .btn-submit:hover {
-      background-color: #b32424;
+      background-color: #d14848ff;
       transform: scale(1.05);
     }
 
@@ -117,6 +117,43 @@
 <body>
 
 <header>
+  <div class="logo">
+    <img src="{{ asset('img/logo.jpeg') }}" alt="Curomania Logo" />
+    <h2>Curomania</h2>
+  </div>
+</header>
+
+<nav>
+  <ul>
+    <li><a href="{{ route('cliente.dashboard') }}">Inicio</a></li>
+    <li><a href="#">Hombre</a></li>
+    <li><a href="#">Mujer</a></li>
+    <li><a href="#">Ofertas</a></li>
+  </ul>
+</nav>
+
+<div class="container">
+  <h1>Editar Perfil</h1>
+
+  @if(session('success'))
+    <div class="alert alert-success">{{ session('success') }}</div>
+  @endif
+
+  @if($errors->any())
+    <div class="alert alert-danger">
+      <ul class="mb-0">
+        @foreach($errors->all() as $error)
+          <li>{{ $error }}</li>
+        @endforeach
+      </ul>
+    </div>
+  @endif
+
+  <form method="POST" action="{{ route('perfil.update') }}">
+    @csrf
+    @method('PUT')
+
+    <header>
   <div class="logo">
     <img src="{{ asset('img/logo.jpeg') }}" alt="Curomania Logo" />
     <h2>Curomania</h2>
@@ -176,6 +213,19 @@
 
     <label for="clave">Nueva Contraseña (dejar en blanco para no cambiar)</label>
     <input type="password" id="clave" name="clave" class="form-control" placeholder="********" />
+
+    <button type="submit" class="btn-submit">Guardar Cambios</button>
+  </form>
+</div>
+
+<footer style="text-align:center; padding: 20px; color:#ccc; margin-top: 40px;">
+  <p>Curomania S.A.S. | Tel: +57 312 456 7890 | servicio@curomania.com</p>
+  <p>Dirección: Calle 123 #45-67, Ciudad Colombia</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
 
     <button type="submit" class="btn-submit">Guardar Cambios</button>
   </form>
