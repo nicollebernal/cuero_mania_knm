@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-09-2025 a las 01:13:48
+-- Tiempo de generación: 14-10-2025 a las 00:06:15
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.0.30
 
@@ -76,7 +76,11 @@ CREATE TABLE `categorias` (
 
 INSERT INTO `categorias` (`id_categoria`, `nombre_categoria`) VALUES
 (1, 'chaquetas'),
-(2, '1');
+(2, 'Pantalones'),
+(3, 'Faldas'),
+(4, 'Abrigos'),
+(5, 'Chalecos'),
+(6, 'Cinturones');
 
 -- --------------------------------------------------------
 
@@ -94,7 +98,13 @@ CREATE TABLE `colores` (
 --
 
 INSERT INTO `colores` (`id_color`, `nombre_color`) VALUES
-(1, 'negro');
+(1, 'negro'),
+(2, 'Café'),
+(3, 'Blanco'),
+(4, 'Gris'),
+(5, 'Azul Marino'),
+(6, 'Rojo'),
+(7, 'Beige');
 
 -- --------------------------------------------------------
 
@@ -162,8 +172,9 @@ CREATE TABLE `generos` (
 --
 
 INSERT INTO `generos` (`id_genero`, `nombre_genero`) VALUES
-(1, 'masculino'),
-(2, 'Femenino');
+(1, 'Masculino'),
+(2, 'Femenino'),
+(3, 'Unisex');
 
 -- --------------------------------------------------------
 
@@ -203,7 +214,12 @@ CREATE TABLE `marcas` (
 
 INSERT INTO `marcas` (`id_marca`, `nombre_marca`) VALUES
 (1, 'levis'),
-(2, 'Marca3');
+(2, 'Gucci'),
+(3, 'Zara'),
+(4, 'H&M'),
+(5, 'CueroMax'),
+(6, 'Armani'),
+(7, 'Diesel');
 
 -- --------------------------------------------------------
 
@@ -286,7 +302,7 @@ CREATE TABLE `personalizacion` (
 --
 
 INSERT INTO `personalizacion` (`id_personalizacion`, `descripcion`, `imagen_personalizacion`, `fecha_solicitud`, `id_usuario`, `id_categoria`, `id_color`, `id_marca`, `id_genero`) VALUES
-(1, 'hola yo quiero esta chaqueta haci', 'personalizaciones/cvGGT2cTDXVMc8559sPef8y1jTLW5zDkcb39DYE0.jpg', '2025-09-23 11:53:55', 1110174687, 1, 1, 1, 1);
+(2, 'esta cahqueta es una de cuero que t', 'personalizaciones/Roadi072Db4xztcnOT0VAwgpHsW3HA15uoy9nNI1.jpg', '2025-09-24 22:19:03', 1025538878, 1, 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -333,7 +349,106 @@ CREATE TABLE `productos` (
 --
 
 INSERT INTO `productos` (`id_producto`, `nombre`, `precio`, `talla`, `estado`, `stock_producto`, `descripcion`, `id_tipo_cierre`, `id_marca`, `id_color`, `id_genero`, `id_categoria`) VALUES
-(1, 'chaqueta de cuero', 180000, 's', 'disponoble', 9, 'chaqueta de cuero para hombre para hombre', 1, 1, 1, 1, 1);
+(1, 'chaqueta de cuero', 180000, 's', 'disponoble', 9, 'chaqueta de cuero para hombre para hombre', 1, 1, 1, 1, 1),
+(2, 'Pantalón Jean Azul Slim', 180000, '32', 'Nuevo', 15, 'Jean ajustado azul clásico de mezclilla elástica.', 2, 1, 5, 1, 2),
+(3, 'Falda Cuero Negra Mujer', 220000, 'M', 'Nuevo', 8, 'Falda corta de cuero negro moderna y elegante.', 2, 3, 1, 2, 3),
+(4, 'Abrigo Largo Café Mujer', 450000, 'L', 'Nuevo', 6, 'Abrigo largo de lana color café con botones grande', 2, 4, 2, 2, 4),
+(5, 'Chaleco Beige Casual Hombre', 270000, 'L', 'Nuevo', 12, 'Chaleco de cuero beige con bolsillos frontales.', 1, 5, 7, 1, 5),
+(6, 'Cinturón Negro Clásico', 95000, 'Ún', 'Nuevo', 30, 'Cinturón ajustable de cuero negro.', 3, 7, 1, 1, 6),
+(7, 'Chaqueta Roja Mujer', 330000, 'S', 'Nuevo', 9, 'Chaqueta roja moderna con cierre metálico.', 1, 3, 6, 2, 1),
+(8, 'Pantalón Cuero Negro Hombre', 310000, '30', 'Nuevo', 7, 'Pantalón ajustado de cuero negro para motociclista', 1, 2, 1, 1, 2),
+(9, 'Falda Azul Marino Plisada', 150000, 'S', 'Nuevo', 10, 'Falda plisada azul marino de diseño moderno.', 2, 4, 5, 2, 3),
+(10, 'Abrigo Blanco Invierno', 490000, 'M', 'Nuevo', 5, 'Abrigo blanco grueso con forro térmico.', 2, 6, 3, 2, 4),
+(11, 'Chaleco Gris Deportivo', 210000, 'M', 'Nuevo', 20, 'Chaleco deportivo con cremallera frontal.', 1, 1, 4, 1, 5),
+(12, 'Cinturón Café Clásico', 80000, 'Ún', 'Nuevo', 18, 'Cinturón de cuero café con hebilla metálica.', 3, 4, 2, 1, 6),
+(13, 'Chaqueta Motociclista Negra', 400000, 'L', 'Nuevo', 6, 'Chaqueta de cuero negra con refuerzos en hombros.', 1, 5, 1, 1, 1),
+(14, 'Pantalón Rojo Casual', 170000, '28', 'Nuevo', 11, 'Pantalón rojo juvenil de algodón.', 2, 3, 6, 2, 2),
+(15, 'Falda Beige Formal', 160000, 'M', 'Nuevo', 10, 'Falda formal beige con diseño sobrio.', 2, 7, 7, 2, 3),
+(16, 'Abrigo Azul Marino Largo', 470000, 'L', 'Nuevo', 8, 'Abrigo azul marino largo y elegante.', 2, 6, 5, 1, 4),
+(17, 'Chaleco Blanco Elegante', 240000, 'M', 'Nuevo', 9, 'Chaleco blanco de cuero para eventos formales.', 1, 2, 3, 1, 5),
+(18, 'Cinturón Rojo Juvenil', 90000, 'Ún', 'Nuevo', 14, 'Cinturón rojo con diseño moderno.', 3, 3, 6, 2, 6),
+(19, 'Chaqueta Beige Mujer', 300000, 'M', 'Nuevo', 10, 'Chaqueta ligera beige con detalles metálicos.', 1, 7, 7, 2, 1),
+(20, 'Pantalón Gris Oficina', 200000, '30', 'Nuevo', 15, 'Pantalón gris formal ideal para oficina.', 2, 4, 4, 1, 2),
+(21, 'Falda Roja Ajustada', 270000, 'M', 'Nuevo', 7, 'Falda ajustada roja de cuero.', 1, 5, 6, 2, 3),
+(22, 'Abrigo Negro Largo', 500000, 'XL', 'Nuevo', 5, 'Abrigo negro largo elegante.', 2, 6, 1, 1, 4),
+(23, 'Chaleco Azul Marino', 210000, 'M', 'Nuevo', 10, 'Chaleco azul marino con diseño moderno.', 1, 1, 5, 1, 5),
+(24, 'Cinturón Blanco Fino', 89000, 'Ún', 'Nuevo', 20, 'Cinturón blanco elegante con hebilla dorada.', 3, 2, 3, 2, 6),
+(25, 'Chaqueta Café Vintage', 340000, 'M', 'Nuevo', 8, 'Chaqueta café estilo retro de cuero.', 1, 5, 2, 1, 1),
+(26, 'Pantalón Negro Formal', 210000, '32', 'Nuevo', 10, 'Pantalón negro elegante para oficina.', 2, 4, 1, 1, 2),
+(27, 'Falda Gris Larga', 180000, 'L', 'Nuevo', 9, 'Falda larga gris formal.', 2, 3, 4, 2, 3),
+(28, 'Abrigo Rojo Corto', 390000, 'S', 'Nuevo', 7, 'Abrigo rojo corto juvenil.', 2, 7, 6, 2, 4),
+(29, 'Chaleco Negro Deportivo', 230000, 'L', 'Nuevo', 13, 'Chaleco negro ligero.', 1, 1, 1, 1, 5),
+(30, 'Cinturón Azul Marino Casual', 87000, 'Ún', 'Nuevo', 25, 'Cinturón de cuero azul marino.', 3, 2, 5, 1, 6),
+(31, 'Chaqueta Gris Moderna', 310000, 'M', 'Nuevo', 11, 'Chaqueta gris moderna.', 1, 3, 4, 2, 1),
+(32, 'Pantalón Beige Urbano', 190000, '30', 'Nuevo', 10, 'Pantalón beige cómodo.', 2, 5, 7, 1, 2),
+(33, 'Falda Café Casual', 160000, 'S', 'Nuevo', 12, 'Falda café para uso diario.', 2, 1, 2, 2, 3),
+(34, 'Abrigo Blanco Formal', 460000, 'M', 'Nuevo', 7, 'Abrigo blanco elegante.', 2, 6, 3, 2, 4),
+(35, 'Chaleco Rojo Casual', 220000, 'M', 'Nuevo', 14, 'Chaleco rojo con cierre.', 1, 4, 6, 1, 5),
+(36, 'Cinturón Negro Elegante', 99000, 'Ún', 'Nuevo', 25, 'Cinturón negro con hebilla cuadrada.', 3, 7, 1, 1, 6),
+(37, 'Chaqueta Azul Marino Premium', 370000, 'L', 'Nuevo', 9, 'Chaqueta azul marino premium.', 1, 5, 5, 1, 1),
+(38, 'Pantalón Blanco Casual', 200000, '30', 'Nuevo', 12, 'Pantalón blanco de algodón.', 2, 2, 3, 2, 2),
+(39, 'Falda Negra Ajustada', 210000, 'M', 'Nuevo', 10, 'Falda ajustada negra.', 1, 3, 1, 2, 3),
+(40, 'Abrigo Café Largo', 470000, 'L', 'Nuevo', 6, 'Abrigo café largo.', 2, 7, 2, 1, 4),
+(41, 'Chaleco Beige Deportivo', 200000, 'M', 'Nuevo', 15, 'Chaleco beige de algodón.', 1, 1, 7, 1, 5),
+(42, 'Cinturón Gris Clásico', 88000, 'Ún', 'Nuevo', 18, 'Cinturón gris elegante.', 3, 4, 4, 1, 6),
+(43, 'Chaqueta Blanca Elegante', 360000, 'M', 'Nuevo', 8, 'Chaqueta blanca formal.', 1, 6, 3, 2, 1),
+(44, 'Pantalón Azul Marino Formal', 195000, '32', 'Nuevo', 14, 'Pantalón azul marino formal.', 2, 1, 5, 1, 2),
+(45, 'Falda Roja Plisada', 190000, 'S', 'Nuevo', 10, 'Falda plisada roja.', 2, 3, 6, 2, 3),
+(46, 'Abrigo Beige Largo', 480000, 'L', 'Nuevo', 6, 'Abrigo beige clásico.', 2, 2, 7, 2, 4),
+(47, 'Chaleco Negro Elegante', 240000, 'M', 'Nuevo', 12, 'Chaleco negro con botones.', 1, 7, 1, 1, 5),
+(48, 'Cinturón Azul Deportivo', 90000, 'Ún', 'Nuevo', 20, 'Cinturón azul deportivo.', 3, 5, 5, 1, 6),
+(49, 'Chaqueta Café Cuero', 330000, 'M', 'Nuevo', 10, 'Chaqueta café clásica.', 1, 5, 2, 1, 1),
+(50, 'Pantalón Gris Moderno', 210000, '30', 'Nuevo', 10, 'Pantalón gris para oficina.', 2, 4, 4, 1, 2),
+(51, 'Falda Blanca Verano', 160000, 'S', 'Nuevo', 10, 'Falda blanca ligera para verano.', 2, 3, 3, 2, 3),
+(52, 'Abrigo Negro Invierno Largo', 510000, 'L', 'Nuevo', 7, 'Abrigo negro largo de lana.', 2, 6, 1, 2, 4),
+(53, 'Chaleco Azul Marino Clásico', 230000, 'M', 'Nuevo', 11, 'Chaleco azul con cierre frontal.', 1, 4, 5, 1, 5),
+(54, 'Cinturón Beige Moderno', 95000, 'Ún', 'Nuevo', 20, 'Cinturón beige con diseño moderno.', 3, 7, 7, 1, 6),
+(55, 'Chaqueta Roja Cuero Mujer', 350000, 'M', 'Nuevo', 8, 'Chaqueta roja de cuero brillante.', 1, 2, 6, 2, 1),
+(56, 'Pantalón Negro Elegante', 220000, '30', 'Nuevo', 15, 'Pantalón negro con costura fina.', 2, 1, 1, 1, 2),
+(57, 'Falda Gris Oficina', 180000, 'M', 'Nuevo', 9, 'Falda gris ideal para oficina.', 2, 5, 4, 2, 3),
+(58, 'Abrigo Azul Largo', 450000, 'L', 'Nuevo', 6, 'Abrigo largo azul elegante.', 2, 6, 5, 1, 4),
+(59, 'Chaleco Café Hombre', 250000, 'M', 'Nuevo', 10, 'Chaleco café casual.', 1, 7, 2, 1, 5),
+(60, 'Cinturón Blanco Mujer', 87000, 'Ún', 'Nuevo', 18, 'Cinturón blanco con diseño dorado.', 3, 3, 3, 2, 6),
+(61, 'Chaqueta Gris Cuero Hombre', 380000, 'L', 'Nuevo', 9, 'Chaqueta de cuero gris moderna.', 1, 5, 4, 1, 1),
+(62, 'Pantalón Azul Marino Slim', 210000, '32', 'Nuevo', 11, 'Pantalón azul marino elegante.', 2, 3, 5, 1, 2),
+(63, 'Falda Beige Corta', 170000, 'S', 'Nuevo', 10, 'Falda beige corta y elegante.', 2, 1, 7, 2, 3),
+(64, 'Abrigo Café Invierno', 490000, 'L', 'Nuevo', 6, 'Abrigo café grueso para invierno.', 2, 7, 2, 1, 4),
+(65, 'Chaleco Negro Premium', 260000, 'M', 'Nuevo', 12, 'Chaleco negro de cuero fino.', 1, 2, 1, 1, 5),
+(66, 'Cinturón Azul Marino Fino', 94000, 'Ún', 'Nuevo', 25, 'Cinturón azul marino elegante.', 3, 4, 5, 1, 6),
+(67, 'Chaqueta Blanca Cuero', 370000, 'M', 'Nuevo', 9, 'Chaqueta blanca elegante de cuero.', 1, 6, 3, 2, 1),
+(68, 'Pantalón Rojo Deportivo', 190000, '30', 'Nuevo', 14, 'Pantalón rojo cómodo.', 2, 5, 6, 2, 2),
+(69, 'Falda Negra Cuero', 230000, 'M', 'Nuevo', 8, 'Falda negra moderna de cuero.', 1, 3, 1, 2, 3),
+(70, 'Abrigo Gris Largo', 460000, 'L', 'Nuevo', 6, 'Abrigo gris largo formal.', 2, 4, 4, 1, 4),
+(71, 'Chaleco Rojo Brillante', 220000, 'M', 'Nuevo', 15, 'Chaleco rojo de diseño brillante.', 1, 7, 6, 2, 5),
+(72, 'Cinturón Negro Ancho', 99000, 'Ún', 'Nuevo', 20, 'Cinturón negro grueso con hebilla grande.', 3, 1, 1, 1, 6),
+(73, 'Chaqueta Azul Marino Mujer', 340000, 'S', 'Nuevo', 9, 'Chaqueta azul marino moderna.', 1, 5, 5, 2, 1),
+(74, 'Pantalón Café Casual', 200000, '30', 'Nuevo', 10, 'Pantalón café de algodón.', 2, 7, 2, 1, 2),
+(75, 'Falda Blanca Plisada', 180000, 'M', 'Nuevo', 11, 'Falda plisada blanca elegante.', 2, 3, 3, 2, 3),
+(76, 'Abrigo Beige Mujer', 480000, 'L', 'Nuevo', 7, 'Abrigo beige largo de invierno.', 2, 2, 7, 2, 4),
+(77, 'Chaleco Azul Marino Hombre', 230000, 'M', 'Nuevo', 13, 'Chaleco azul marino elegante.', 1, 4, 5, 1, 5),
+(78, 'Cinturón Gris Moderno', 88000, 'Ún', 'Nuevo', 20, 'Cinturón gris con hebilla cuadrada.', 3, 6, 4, 1, 6),
+(79, 'Chaqueta Roja Premium', 370000, 'M', 'Nuevo', 8, 'Chaqueta roja elegante.', 1, 2, 6, 2, 1),
+(80, 'Pantalón Blanco Hombre', 210000, '32', 'Nuevo', 15, 'Pantalón blanco moderno.', 2, 3, 3, 1, 2),
+(81, 'Falda Azul Marino Larga', 200000, 'L', 'Nuevo', 9, 'Falda larga azul marino.', 2, 4, 5, 2, 3),
+(82, 'Abrigo Negro Corto', 410000, 'M', 'Nuevo', 6, 'Abrigo negro corto.', 2, 5, 1, 1, 4),
+(83, 'Chaleco Beige Ligero', 210000, 'M', 'Nuevo', 14, 'Chaleco beige de algodón.', 1, 6, 7, 1, 5),
+(84, 'Cinturón Rojo Fino', 90000, 'Ún', 'Nuevo', 18, 'Cinturón rojo elegante.', 3, 7, 6, 2, 6),
+(85, 'Chaqueta Gris Hombre', 360000, 'L', 'Nuevo', 10, 'Chaqueta gris moderna.', 1, 1, 4, 1, 1),
+(86, 'Pantalón Azul Clásico', 190000, '30', 'Nuevo', 12, 'Pantalón azul clásico.', 2, 2, 5, 1, 2),
+(87, 'Falda Beige Corta Mujer', 160000, 'S', 'Nuevo', 11, 'Falda beige corta.', 2, 5, 7, 2, 3),
+(88, 'Abrigo Blanco Mujer', 480000, 'M', 'Nuevo', 7, 'Abrigo blanco largo.', 2, 6, 3, 2, 4),
+(89, 'Chaleco Negro Clásico', 230000, 'M', 'Nuevo', 12, 'Chaleco negro con cierre.', 1, 7, 1, 1, 5),
+(90, 'Cinturón Café Formal', 93000, 'Ún', 'Nuevo', 22, 'Cinturón café formal.', 3, 4, 2, 1, 6),
+(91, 'Chaqueta Azul Marino Hombre', 370000, 'M', 'Nuevo', 9, 'Chaqueta azul marino elegante.', 1, 3, 5, 1, 1),
+(92, 'Pantalón Gris Slim', 210000, '32', 'Nuevo', 14, 'Pantalón gris ajustado.', 2, 1, 4, 1, 2),
+(93, 'Falda Roja Corta', 190000, 'S', 'Nuevo', 10, 'Falda corta roja.', 2, 2, 6, 2, 3),
+(94, 'Abrigo Beige Corto', 440000, 'M', 'Nuevo', 8, 'Abrigo beige corto.', 2, 7, 7, 2, 4),
+(95, 'Chaleco Blanco Deportivo', 210000, 'M', 'Nuevo', 15, 'Chaleco blanco ligero.', 1, 5, 3, 1, 5),
+(96, 'Cinturón Azul Casual', 87000, 'Ún', 'Nuevo', 19, 'Cinturón azul casual.', 3, 6, 5, 1, 6),
+(97, 'Chaqueta Roja Hombre', 350000, 'L', 'Nuevo', 9, 'Chaqueta roja moderna.', 1, 7, 6, 1, 1),
+(98, 'Pantalón Negro Mujer', 210000, '30', 'Nuevo', 11, 'Pantalón negro elegante.', 2, 3, 1, 2, 2),
+(99, 'Falda Azul Marino Corta', 180000, 'S', 'Nuevo', 8, 'Falda corta azul marino.', 2, 4, 5, 2, 3),
+(100, 'Abrigo Gris Hombre', 470000, 'L', 'Nuevo', 7, 'Abrigo gris clásico de invierno.', 2, 5, 4, 1, 4);
 
 -- --------------------------------------------------------
 
@@ -392,7 +507,12 @@ CREATE TABLE `tipos_cierres` (
 --
 
 INSERT INTO `tipos_cierres` (`id_tipo_cierre`, `tipo_cierre`) VALUES
-(1, 'cremallera');
+(1, 'cremallera'),
+(2, 'Botón'),
+(3, 'Hebilla'),
+(4, 'Broche'),
+(5, 'Correa'),
+(6, 'Velcro');
 
 -- --------------------------------------------------------
 
@@ -448,6 +568,7 @@ CREATE TABLE `usuarios` (
 
 INSERT INTO `usuarios` (`id_usuario`, `primer_nombre`, `segundo_nombre`, `primer_apellido`, `segundo_apellido`, `direccion`, `contacto`, `gmail`, `clave`, `id_rol`) VALUES
 (1025538878, 'Nicolle', 'Vanessa', 'Bernal', 'Neira', 'calle 44 F sur 72-85', '3027405201', 'bernalnicolle1025@gmail.com', '10101010', 2),
+(1031808274, 'Daniel', 'Alexander', 'Gonzales', 'Suares', 'cll 142c N151b 009', '3142202119', 'danielsuares11977@gmail.com', 'daniel222', 3),
 (1110174687, 'juan', 'sebastian', 'Montiel', 'Quimbayo', 'calle 40 sur 72 g23', '3162914315', 'montielsebatian555@gmail.com', '38849', 2),
 (1354568864, 'khen', 'rafael', 'jimenez', 'Guerrero', 'calle20 sur 30f24', '3156494965', 'khen6464@gmail.com', '1111111111', 1);
 
@@ -650,13 +771,13 @@ ALTER TABLE `ventas`
 -- AUTO_INCREMENT de la tabla `categorias`
 --
 ALTER TABLE `categorias`
-  MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `colores`
 --
 ALTER TABLE `colores`
-  MODIFY `id_color` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_color` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `detalles_ventas`
@@ -674,7 +795,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT de la tabla `generos`
 --
 ALTER TABLE `generos`
-  MODIFY `id_genero` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_genero` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `inventario`
@@ -686,7 +807,7 @@ ALTER TABLE `inventario`
 -- AUTO_INCREMENT de la tabla `marcas`
 --
 ALTER TABLE `marcas`
-  MODIFY `id_marca` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_marca` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `migrations`
@@ -704,7 +825,7 @@ ALTER TABLE `pagos`
 -- AUTO_INCREMENT de la tabla `personalizacion`
 --
 ALTER TABLE `personalizacion`
-  MODIFY `id_personalizacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_personalizacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `personal_access_tokens`
@@ -716,7 +837,7 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
 
 --
 -- AUTO_INCREMENT de la tabla `proveedores`
@@ -734,7 +855,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT de la tabla `tipos_cierres`
 --
 ALTER TABLE `tipos_cierres`
-  MODIFY `id_tipo_cierre` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_tipo_cierre` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `ubicación_producto`
@@ -752,7 +873,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1848555465;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1848555466;
 
 --
 -- AUTO_INCREMENT de la tabla `valoraciones`
