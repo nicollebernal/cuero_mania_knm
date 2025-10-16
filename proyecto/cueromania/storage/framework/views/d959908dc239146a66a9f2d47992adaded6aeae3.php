@@ -12,11 +12,6 @@
         </div>
     <?php endif; ?>
 
-    <div class="mb-3 text-end">
-        <a href="<?php echo e(route('admi.personalizacion.create')); ?>" class="btn btn-primary">
-            Nueva Personalización
-        </a>
-    </div>
 
     <table class="table table-hover table-bordered shadow-sm align-middle text-center">
         <thead class="table-dark">

@@ -20,7 +20,8 @@ Route::post('/register', [RegisterController::class, 'register'])->name('registe
 
 Route::get('/admin/dashboard', fn() => view('admi.panel'))->name('admin.dashboard');
 Route::get('/empleado/dashboard', fn() => view('empleado.panel'))->name('empleado.dashboard');
-Route::get('/cliente/dashboard', fn() => view('cliente.cliente'))->name('cliente.dashboard');
+
+Route::get('/cliente/dashboard', [CarritoController::class, 'productos'])->name('cliente.dashboard');
 
 Route::prefix('admi')->name('admi.')->group(function () {
     Route::resource('usuarios', UsuarioController::class);
@@ -38,7 +39,7 @@ Route::prefix('cliente')->name('cliente.')->group(function () {
     Route::post('personalizacion/store', [PersonalizacionController::class, 'store'])->name('personalizacion.store');
 });
 
-Route::post('/carrito/agregar', [CarritoController::class, 'agregar'])->name('carrito.agregar');
-Route::get('/carrito', [CarritoController::class, 'ver'])->name('carrito.ver');
-Route::delete('/carrito/eliminar/{id}', [CarritoController::class, 'eliminar'])->name('carrito.eliminar');
-
+Route::get('/carrito', [CarritoController::class, 'index'])->name('carrito.index');
+Route::post('/carrito/agregar/{id}', [CarritoController::class, 'agregar'])->name('carrito.agregar');
+Route::post('/carrito/eliminar/{id}', [CarritoController::class, 'eliminar'])->name('carrito.eliminar');
+Route::post('/carrito/pagar', [CarritoController::class, 'pagar'])->name('carrito.pagar');

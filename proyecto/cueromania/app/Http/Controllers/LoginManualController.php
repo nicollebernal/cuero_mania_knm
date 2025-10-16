@@ -43,7 +43,6 @@ class LoginManualController extends Controller
             }
         }
 
-        // Validación: si está hasheado usar Hash::check, sino comparar texto plano
         $valid = $isHashed ? Hash::check($input, $stored) : ($input === $stored);
 
         if (! $valid) {

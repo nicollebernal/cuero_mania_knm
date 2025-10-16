@@ -2,16 +2,21 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Mi Carrito - Curomania</title>
+    <title>Mi Carrito - Cueromanía</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/cliente.css') }}">
     <style>
-        /* === Estilos adicionales solo para el carrito === */
-
         body {
             background: linear-gradient(135deg, #8d1b2e, #5a0f1b, #570a18);
             background-size: 400% 400%;
             animation: gradient 12s ease infinite;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         .carrito-container {
@@ -37,25 +42,16 @@
             letter-spacing: 1px;
         }
 
-        .mensaje {
+        .alert {
             text-align: center;
-            margin-bottom: 20px;
-            font-weight: bold;
-        }
-
-        .mensaje.success {
-            color: green;
-        }
-
-        .mensaje.error {
-            color: #b32424;
+            font-weight: 600;
+            border-radius: 10px;
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
-            border-radius: 10px;
-            overflow: hidden;
+            margin-top: 20px;
         }
 
         th {
@@ -92,18 +88,18 @@
             transform: scale(1.05);
         }
 
-        .btn-volver {
+        .btn-volver, .btn-pagar {
             display: inline-block;
-            margin-top: 30px;
+            margin-top: 25px;
             text-decoration: none;
             background-color: #8d1b2e;
             color: white;
-            padding: 10px 18px;
+            padding: 10px 20px;
             border-radius: 25px;
             transition: all 0.3s ease;
         }
 
-        .btn-volver:hover {
+        .btn-volver:hover, .btn-pagar:hover {
             background-color: #b32424;
             transform: scale(1.05);
         }
@@ -112,8 +108,16 @@
             text-align: center;
             color: #555;
             font-size: 18px;
+            margin-top: 30px;
         }
 
+        .total {
+            text-align: right;
+            margin-top: 20px;
+            font-weight: 600;
+            color: #8d1b2e;
+            font-size: 18px;
+        }
     </style>
 </head>
 <body>
@@ -122,29 +126,33 @@
     <h1>🛒 Mi Carrito</h1>
 
     @if(session('success'))
-        <p class="mensaje success">{{ session('success') }}</p>
+        <div class="alert alert-success">{{ session('success') }}</div>
+    @endif
+    @if(session('error'))
+        <div class="alert alert-danger">{{ session('error') }}</div>
     @endif
 
-    @if(empty($carrito))
-        <p class="vacio">No hay productos en el carrito.</p>
-    @else
+    @if(count($carrito) > 0)
         <table>
             <thead>
                 <tr>
-                    <th>ID Producto</th>
+                    <th>Producto</th>
+                    <th>Precio</th>
                     <th>Cantidad</th>
-                    <th>Acciones</th>
+                    <th>Subtotal</th>
+                    <th>Acción</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach($carrito as $id => $item)
                     <tr>
-                        <td>{{ $item['id_producto'] }}</td>
+                        <td>{{ $item['nombre'] }}</td>
+                        <td>${{ number_format($item['precio'], 0, ',', '.') }}</td>
                         <td>{{ $item['cantidad'] }}</td>
+                        <td>${{ number_format($item['precio'] * $item['cantidad'], 0, ',', '.') }}</td>
                         <td>
-                            <form action="{{ route('carrito.eliminar', $id) }}" method="POST" onsubmit="return confirm('¿Eliminar este producto del carrito?')">
+                            <form action="{{ route('carrito.eliminar', $id) }}" method="POST">
                                 @csrf
-                                @method('DELETE')
                                 <button type="submit">Eliminar</button>
                             </form>
                         </td>
@@ -152,11 +160,19 @@
                 @endforeach
             </tbody>
         </table>
-    @endif
 
-    <div style="text-align:center;">
-        <a href="{{ url('/cliente/dashboard') }}" class="btn-volver">← Volver a Productos</a>
-    </div>
+        <p class="total">Total: ${{ number_format($total, 0, ',', '.') }}</p>
+
+        <div style="text-align:center;">
+            <form action="{{ route('carrito.pagar') }}" method="POST" style="display:inline-block;">
+                @csrf
+                <button type="submit" class="btn-pagar"> Pagar</button>
+            </form>
+            <a href="{{ url('/cliente/dashboard') }}" class="btn-volver">← Volver a Productos</a>
+        </div>
+    @else
+        <p class="vacio">No hay productos en el carrito.</p>
+    @endif
 </div>
 
 </body>

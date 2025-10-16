@@ -22,7 +22,7 @@ class RegisterController extends Controller
             'segundo_apellido'  => 'nullable|string|max:17',
             'direccion'         => 'required|string|max:50',
             'contacto'          => 'required|string|max:15',
-            'gmail'             => 'required|email|max:30|unique:usuarios,gmail',
+            'gmail'             => 'required|email|max:50|unique:usuarios,gmail',
             'clave'             => 'required|string|min:6|confirmed',
         ]);
 
