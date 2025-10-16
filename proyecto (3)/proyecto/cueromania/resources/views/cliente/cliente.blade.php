@@ -101,7 +101,7 @@
 
     h1 {
       text-align: center;
-      color: #d5d3d3ff;
+      color: #535252ff;
       margin-bottom: 40px;
     }
 
@@ -133,7 +133,7 @@
 
     .producto-card p {
       font-size: 18px;
-      color: #b2afb0ff;
+      color: #8d1b2e;
       font-weight: bold;
     }
 
@@ -235,7 +235,7 @@
   <p>Dirección: Calle 123 #45-67, Ciudad Colombia</p>
 </footer>
 
-
+<!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
