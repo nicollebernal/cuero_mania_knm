@@ -1,1 +1,0 @@
-<?php /**PATH C:\xampp\htdocs\proyecto\cueromania\resources\views/usuarios/show.blade.php ENDPATH**/ ?>
